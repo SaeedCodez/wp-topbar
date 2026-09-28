@@ -102,13 +102,28 @@ body.admin-bar #wptb-bar.wptb-sticky {
 	font-size: 0 !important;
 }
 
+/*
+ * The admin live preview keeps both the content row and the full-image link
+ * in the DOM at all times and switches modes via the .wptb-image-mode class,
+ * so both display states must be scoped to that class (an un-scoped
+ * `!important` here would always beat the plain inline style JS uses to hide
+ * the inactive one).
+ */
+#wptb-bar.wptb-image-mode .wptb-inner {
+	display: none !important;
+}
+
 #wptb-bar .wptb-full-image-link {
-	display: block !important;
+	display: none !important;
 	width: 100% !important;
 	height: var(--wptb-height, 44px) !important;
 	margin: 0 !important;
 	padding: 0 !important;
 	border: 0 !important;
+}
+
+#wptb-bar.wptb-image-mode .wptb-full-image-link {
+	display: block !important;
 }
 
 #wptb-bar .wptb-full-image {
