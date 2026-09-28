@@ -29,7 +29,7 @@
 	line-height: 1.5 !important;
 	text-align: left !important;
 	direction: inherit !important;
-	z-index: 999999 !important;
+	z-index: 100 !important;
 	float: none !important;
 	clear: both !important;
 	border: 0 !important;
