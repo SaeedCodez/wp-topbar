@@ -199,13 +199,13 @@ class WP_Topbar_Frontend {
 				}catch(e){}
 			}
 			if(isClosed()){
-				bar.style.display='none';
+				bar.style.setProperty('display','none','important');
 			}else{
 				var btn=bar.querySelector('.wptb-close');
 				if(btn){
 					btn.addEventListener('click',function(){
 						setClosed();
-						bar.style.display='none';
+						bar.style.setProperty('display','none','important');
 					});
 				}
 			}
