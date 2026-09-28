@@ -1,0 +1,401 @@
+/**
+ * WP Top Bar — admin settings page.
+ * Minimal, modern styling inspired by Vercel's dashboard.
+ */
+
+.wptb-wrap {
+	max-width: 900px;
+	margin: 24px 20px 60px 0;
+	font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+	color: #171717;
+}
+
+.wptb-wrap * {
+	box-sizing: border-box;
+}
+
+.wptb-header {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	padding: 20px 24px;
+	background: #fff;
+	border: 1px solid #eaeaea;
+	border-radius: 12px;
+	margin-bottom: 20px;
+}
+
+.wptb-header-title {
+	display: flex;
+	align-items: center;
+	gap: 14px;
+}
+
+.wptb-logo {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	width: 40px;
+	height: 40px;
+	border-radius: 10px;
+	background: #0a0a0a;
+	color: #fff;
+	font-size: 20px;
+}
+
+.wptb-header h1 {
+	font-size: 18px;
+	font-weight: 600;
+	margin: 0 0 2px;
+	padding: 0;
+	line-height: 1.3;
+}
+
+.wptb-header p {
+	margin: 0;
+	font-size: 13px;
+	color: #666;
+}
+
+.wptb-version {
+	font-size: 12px;
+	font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+	color: #888;
+	background: #fafafa;
+	border: 1px solid #eaeaea;
+	border-radius: 6px;
+	padding: 4px 8px;
+}
+
+.wptb-preview-wrap {
+	margin-bottom: 20px;
+}
+
+.wptb-preview-label {
+	font-size: 12px;
+	font-weight: 600;
+	text-transform: uppercase;
+	letter-spacing: 0.04em;
+	color: #888;
+	margin: 0 0 8px 4px;
+}
+
+.wptb-preview-frame {
+	border: 1px solid #eaeaea;
+	border-radius: 12px;
+	overflow: hidden;
+	background: repeating-conic-gradient(#fafafa 0% 25%, #fff 0% 50%) 50% / 16px 16px;
+}
+
+.wptb-preview-bar {
+	position: relative !important;
+	top: auto !important;
+}
+
+.wptb-grid {
+	display: grid;
+	grid-template-columns: 1fr;
+	gap: 20px;
+}
+
+.wptb-card {
+	background: #fff;
+	border: 1px solid #eaeaea;
+	border-radius: 12px;
+	padding: 22px 24px;
+}
+
+.wptb-card-header {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	margin-bottom: 4px;
+}
+
+.wptb-card-header h2 {
+	font-size: 15px;
+	font-weight: 600;
+	margin: 0;
+	padding: 0;
+}
+
+.wptb-card-desc {
+	font-size: 13px;
+	color: #666;
+	margin: 0 0 18px;
+}
+
+.wptb-field {
+	margin-bottom: 16px;
+}
+
+.wptb-field:last-child {
+	margin-bottom: 0;
+}
+
+.wptb-field-row {
+	display: grid;
+	grid-template-columns: 1fr 1fr;
+	gap: 16px;
+	margin-bottom: 16px;
+}
+
+.wptb-field-row:last-child {
+	margin-bottom: 0;
+}
+
+.wptb-field-inline {
+	display: flex;
+	align-items: center;
+	gap: 12px;
+}
+
+.wptb-field label {
+	display: block;
+	font-size: 13px;
+	font-weight: 500;
+	color: #333;
+	margin-bottom: 6px;
+}
+
+.wptb-hint {
+	font-size: 12px;
+	color: #999;
+	margin: 6px 0 0;
+}
+
+.wptb-input,
+.wptb-color-field {
+	width: 100%;
+	padding: 8px 10px;
+	font-size: 13px;
+	border: 1px solid #e2e2e2;
+	border-radius: 8px;
+	background: #fff;
+	box-shadow: none;
+	transition: border-color 0.15s ease;
+}
+
+.wptb-input:focus,
+.wptb-color-field:focus {
+	border-color: #0a0a0a;
+	outline: none;
+	box-shadow: 0 0 0 3px rgba(10, 10, 10, 0.08);
+}
+
+textarea.wptb-input {
+	resize: vertical;
+	font-family: inherit;
+}
+
+.wptb-input-number {
+	max-width: 90px;
+}
+
+.wptb-range-wrap {
+	display: flex;
+	align-items: center;
+	gap: 12px;
+}
+
+.wptb-range-wrap input[type="range"] {
+	flex: 1;
+	accent-color: #0a0a0a;
+}
+
+.wptb-checkbox {
+	display: flex;
+	align-items: center;
+	gap: 8px;
+	font-size: 13px;
+	color: #333;
+	margin-top: 4px;
+}
+
+/* Toggle switch */
+.wptb-switch {
+	position: relative;
+	display: inline-block;
+	width: 38px;
+	height: 22px;
+	flex: none;
+}
+
+.wptb-switch input {
+	opacity: 0;
+	width: 0;
+	height: 0;
+	position: absolute;
+}
+
+.wptb-switch-slider {
+	position: absolute;
+	inset: 0;
+	background-color: #e2e2e2;
+	border-radius: 999px;
+	cursor: pointer;
+	transition: background-color 0.15s ease;
+}
+
+.wptb-switch-slider::before {
+	content: "";
+	position: absolute;
+	width: 16px;
+	height: 16px;
+	left: 3px;
+	top: 3px;
+	background-color: #fff;
+	border-radius: 50%;
+	transition: transform 0.15s ease;
+	box-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
+}
+
+.wptb-switch input:checked + .wptb-switch-slider {
+	background-color: #0a0a0a;
+}
+
+.wptb-switch input:checked + .wptb-switch-slider::before {
+	transform: translateX(16px);
+}
+
+.wptb-switch input:focus-visible + .wptb-switch-slider {
+	box-shadow: 0 0 0 3px rgba(10, 10, 10, 0.2);
+}
+
+/* Image picker */
+.wptb-image-picker {
+	display: flex;
+	align-items: center;
+	gap: 16px;
+	margin-bottom: 16px;
+}
+
+.wptb-image-preview {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	width: 64px;
+	height: 64px;
+	border: 1px dashed #ddd;
+	border-radius: 10px;
+	overflow: hidden;
+	background: #fafafa;
+	color: #bbb;
+	flex: none;
+}
+
+.wptb-image-preview img {
+	max-width: 100%;
+	max-height: 100%;
+	object-fit: contain;
+}
+
+.wptb-image-actions {
+	display: flex;
+	align-items: center;
+	gap: 10px;
+}
+
+.wptb-image-actions .button-link-delete {
+	font-size: 12px;
+}
+
+.wptb-image-preview-wide {
+	width: 140px;
+}
+
+/* Bar type / mode switcher */
+.wptb-mode-choice {
+	display: grid;
+	grid-template-columns: 1fr 1fr;
+	gap: 12px;
+}
+
+.wptb-mode-option {
+	position: relative;
+	display: flex;
+	flex-direction: column;
+	gap: 4px;
+	padding: 14px 16px;
+	border: 1px solid #e2e2e2;
+	border-radius: 10px;
+	cursor: pointer;
+	transition: border-color 0.15s ease, background-color 0.15s ease;
+}
+
+.wptb-mode-option:hover {
+	border-color: #ccc;
+}
+
+.wptb-mode-option input {
+	position: absolute;
+	top: 14px;
+	right: 14px;
+	margin: 0;
+	accent-color: #0a0a0a;
+}
+
+.wptb-mode-option:has(input:checked) {
+	border-color: #0a0a0a;
+	background: #fafafa;
+	box-shadow: 0 0 0 1px #0a0a0a;
+}
+
+.wptb-mode-option-title {
+	font-size: 13px;
+	font-weight: 600;
+	padding-right: 24px;
+}
+
+.wptb-mode-option-desc {
+	font-size: 12px;
+	color: #888;
+}
+
+.wptb-mode-fields {
+	display: contents;
+}
+
+.wptb-mode-fields.wptb-mode-hidden {
+	display: none;
+}
+
+.wptb-schedule-fields {
+	transition: opacity 0.15s ease;
+}
+
+.wptb-schedule-fields.is-disabled {
+	opacity: 0.4;
+	pointer-events: none;
+}
+
+.wptb-submit-bar {
+	position: sticky;
+	bottom: 0;
+	margin-top: 24px;
+	padding: 16px 0;
+	background: linear-gradient(to top, #f0f0f1 60%, transparent);
+}
+
+.wptb-submit-bar .button-primary {
+	background: #0a0a0a;
+	border-color: #0a0a0a;
+	border-radius: 8px;
+	padding: 6px 18px;
+	height: auto;
+	font-weight: 500;
+	box-shadow: none;
+	text-shadow: none;
+}
+
+.wptb-submit-bar .button-primary:hover,
+.wptb-submit-bar .button-primary:focus {
+	background: #262626;
+	border-color: #262626;
+}
+
+@media screen and (max-width: 640px) {
+	.wptb-field-row {
+		grid-template-columns: 1fr;
+	}
+}
