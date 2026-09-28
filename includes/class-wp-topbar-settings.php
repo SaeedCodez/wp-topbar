@@ -94,6 +94,20 @@ class WP_Topbar_Settings {
 	}
 
 	/**
+	 * Sanitize and persist a settings array, refreshing the cache.
+	 *
+	 * @param array $input Raw input from the settings form.
+	 * @return array The sanitized, saved options.
+	 */
+	public function save( $input ) {
+		$sanitized     = $this->sanitize( $input );
+		update_option( WPTB_OPTION_KEY, $sanitized );
+		$this->options = $sanitized;
+
+		return $sanitized;
+	}
+
+	/**
 	 * Sanitize the settings array before saving.
 	 *
 	 * @param array $input Raw input from the settings form.

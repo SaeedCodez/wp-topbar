@@ -122,6 +122,10 @@ msgstr "رنگ‌ها"
 msgid "Content bar"
 msgstr "نوار متنی"
 
+#: includes/class-wp-topbar-admin.php:109
+msgid "Could not save settings. Please try again."
+msgstr "ذخیره تنظیمات ممکن نشد. لطفاً دوباره تلاش کنید."
+
 #: includes/views/settings-page.php:257
 msgid "Current browser session"
 msgstr "نشست فعلی مرورگر"
@@ -208,9 +212,17 @@ msgstr "حذف"
 msgid "Save changes"
 msgstr "ذخیره تغییرات"
 
+#: includes/class-wp-topbar-admin.php:107
+msgid "Saving…"
+msgstr "در حال ذخیره…"
+
 #: includes/class-wp-topbar-admin.php:60
 msgid "Settings"
 msgstr "تنظیمات"
+
+#: includes/class-wp-topbar-admin.php:108
+msgid "Settings saved."
+msgstr "تنظیمات ذخیره شد."
 
 #: includes/views/settings-page.php:98
 msgid "Show a call-to-action button next to the message."

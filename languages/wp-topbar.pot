@@ -120,6 +120,10 @@ msgstr ""
 msgid "Content bar"
 msgstr ""
 
+#: includes/class-wp-topbar-admin.php:109
+msgid "Could not save settings. Please try again."
+msgstr ""
+
 #: includes/views/settings-page.php:257
 msgid "Current browser session"
 msgstr ""
@@ -206,8 +210,16 @@ msgstr ""
 msgid "Save changes"
 msgstr ""
 
+#: includes/class-wp-topbar-admin.php:107
+msgid "Saving…"
+msgstr ""
+
 #: includes/class-wp-topbar-admin.php:60
 msgid "Settings"
+msgstr ""
+
+#: includes/class-wp-topbar-admin.php:108
+msgid "Settings saved."
 msgstr ""
 
 #: includes/views/settings-page.php:98

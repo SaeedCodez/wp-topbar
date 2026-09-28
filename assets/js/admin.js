@@ -202,5 +202,58 @@
 		updateFullImagePreviewNode( initialFullImage || '' );
 
 		updatePreview();
+
+		// Save settings over AJAX so the page never reloads.
+		var $submit      = $form.find( '#submit' );
+		var submitLabel  = $submit.val();
+		var resetTimer;
+
+		function setButtonState( state, text ) {
+			clearTimeout( resetTimer );
+			$submit.attr( 'class', $submit.attr( 'class' ).replace( /\bis-\S+/g, '' ).trim() );
+
+			if ( 'idle' === state ) {
+				$submit.prop( 'disabled', false ).val( submitLabel );
+				return;
+			}
+
+			$submit.addClass( 'is-' + state ).val( text );
+
+			if ( 'saved' === state || 'error' === state ) {
+				$submit.prop( 'disabled', false );
+				resetTimer = setTimeout( function () {
+					setButtonState( 'idle' );
+				}, 2500 );
+			} else {
+				$submit.prop( 'disabled', true );
+			}
+		}
+
+		$form.on( 'submit', function ( e ) {
+			e.preventDefault();
+
+			if ( ! window.wptbAdmin || ! wptbAdmin.ajaxUrl ) {
+				return;
+			}
+
+			setButtonState( 'saving', wptbAdmin.savingText );
+
+			$.ajax( {
+				url: wptbAdmin.ajaxUrl,
+				method: 'POST',
+				dataType: 'json',
+				data: $form.serialize() + '&action=wptb_save_settings&nonce=' + encodeURIComponent( wptbAdmin.nonce ),
+			} )
+				.done( function ( response ) {
+					if ( response && response.success ) {
+						setButtonState( 'saved', wptbAdmin.savedText );
+					} else {
+						setButtonState( 'error', wptbAdmin.errorText );
+					}
+				} )
+				.fail( function () {
+					setButtonState( 'error', wptbAdmin.errorText );
+				} );
+		} );
 	} );
 } )( jQuery );

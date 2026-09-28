@@ -31,6 +31,7 @@ class WP_Topbar_Admin {
 		add_action( 'admin_menu', array( $this, 'add_menu' ) );
 		add_action( 'admin_init', array( $this, 'register_setting' ) );
 		add_action( 'admin_enqueue_scripts', array( $this, 'enqueue_assets' ) );
+		add_action( 'wp_ajax_wptb_save_settings', array( $this, 'ajax_save_settings' ) );
 		add_filter( 'plugin_action_links_' . WPTB_BASENAME, array( $this, 'add_settings_link' ) );
 	}
 
@@ -101,8 +102,29 @@ class WP_Topbar_Admin {
 			array(
 				'chooseImageTitle' => __( 'Choose an image', 'wp-topbar' ),
 				'useImageText'     => __( 'Use this image', 'wp-topbar' ),
+				'ajaxUrl'          => admin_url( 'admin-ajax.php' ),
+				'nonce'            => wp_create_nonce( 'wptb_save_settings' ),
+				'savingText'       => __( 'Saving…', 'wp-topbar' ),
+				'savedText'        => __( 'Settings saved.', 'wp-topbar' ),
+				'errorText'        => __( 'Could not save settings. Please try again.', 'wp-topbar' ),
 			)
 		);
+	}
+
+	/**
+	 * Handle the AJAX settings save request.
+	 */
+	public function ajax_save_settings() {
+		check_ajax_referer( 'wptb_save_settings', 'nonce' );
+
+		if ( ! current_user_can( 'manage_options' ) ) {
+			wp_send_json_error( array( 'message' => __( 'You are not allowed to do this.', 'wp-topbar' ) ), 403 );
+		}
+
+		$input = isset( $_POST['wptb_options'] ) ? wp_unslash( $_POST['wptb_options'] ) : array();
+		$saved = $this->settings->save( $input );
+
+		wp_send_json_success( array( 'options' => $saved ) );
 	}
 
 	/**
