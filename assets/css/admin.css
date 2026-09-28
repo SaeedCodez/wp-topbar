@@ -87,11 +87,6 @@
 	background: repeating-conic-gradient(#fafafa 0% 25%, #fff 0% 50%) 50% / 16px 16px;
 }
 
-.wptb-preview-bar {
-	position: relative !important;
-	top: auto !important;
-}
-
 .wptb-grid {
 	display: grid;
 	grid-template-columns: 1fr;

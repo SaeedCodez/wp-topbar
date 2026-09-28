@@ -70,7 +70,7 @@ class WP_Topbar_Frontend {
 	}
 
 	/**
-	 * Enqueue the forced frontend stylesheet.
+	 * Enqueue the frontend stylesheet.
 	 */
 	public function enqueue_assets() {
 		if ( ! $this->should_display() ) {
@@ -199,13 +199,13 @@ class WP_Topbar_Frontend {
 				}catch(e){}
 			}
 			if(isClosed()){
-				bar.style.setProperty('display','none','important');
+				bar.style.display='none';
 			}else{
 				var btn=bar.querySelector('.wptb-close');
 				if(btn){
 					btn.addEventListener('click',function(){
 						setClosed();
-						bar.style.setProperty('display','none','important');
+						bar.style.display='none';
 					});
 				}
 			}

@@ -12,7 +12,7 @@ See [`readme.txt`](readme.txt) for the full WordPress plugin readme (features, i
 - Sticky mode with adjustable height
 - Close button with per-visitor remembered state (session / N days / permanent)
 - Display time range (schedule a start/end date & time)
-- Forced styles so themes/plugins can't override layout or colors
+- Scoped styles that hold up against theme/plugin CSS without `!important`
 - Inherits your theme's body font
 - Minimal, modern admin UI with a live preview
 - Built-in English and Persian (فارسی) translations

@@ -26,7 +26,7 @@ WP Top Bar adds a clean, theme-proof notification bar to the top of your site. U
 * Sticky mode, so the bar stays visible while visitors scroll
 * Dismissible close button — the visitor's choice is remembered in their browser (session, days, or permanently)
 * Display time range — schedule the bar to only appear between a start and end date/time
-* Forced styles — the bar's layout and colors can't be overridden by your theme or other plugins
+* Scoped styles — the bar's layout and colors hold up against typical theme and plugin CSS
 * Uses your theme's body font automatically
 * Minimal, modern admin screen with a live preview
 * Built-in English and Persian (فارسی) translations
@@ -58,7 +58,7 @@ Yes — `<a>`, `<strong>`, `<em>`, `<br>` and `<span>` are allowed.
 
 = Will the bar's styling clash with my theme? =
 
-No. The plugin's CSS is scoped and uses forced (`!important`) rules on layout-critical properties, so theme and plugin styles cannot break its layout or colors. It intentionally inherits your theme's body font.
+No. All of the plugin's CSS is scoped to the bar's `#wptb-bar` ID, so ordinary theme and plugin styles cannot break its layout or colors, while you can still customize it with your own CSS. It intentionally inherits your theme's body font.
 
 == Changelog ==
 
