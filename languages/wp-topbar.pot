@@ -1,6 +1,6 @@
 msgid ""
 msgstr ""
-"Project-Id-Version: WP Top Bar 1.0.0\n"
+"Project-Id-Version: WP Top Bar 1.1.0\n"
 "Report-Msgid-Bugs-To: https://github.com/saeedcodez/wp-topbar/issues\n"
 "POT-Creation-Date: 2026-09-28T00:00:00+00:00\n"
 "MIME-Version: 1.0\n"
@@ -26,192 +26,237 @@ msgstr ""
 msgid "SaeedCodez"
 msgstr ""
 
-#: includes/class-wp-topbar-admin.php:42
-#: includes/class-wp-topbar-admin.php:43
-#: includes/views/settings-page.php:19
-msgid "Top Bar"
+#: includes/views/settings-page.php:258
+msgid "1 day"
 msgstr ""
 
-#: includes/class-wp-topbar-admin.php:60
-msgid "Settings"
+#: includes/views/settings-page.php:260
+msgid "14 days"
 msgstr ""
 
-#: includes/class-wp-topbar-admin.php:102
-msgid "Choose an image"
+#: includes/views/settings-page.php:261
+msgid "30 days"
 msgstr ""
 
-#: includes/class-wp-topbar-admin.php:103
-msgid "Use this image"
-msgstr ""
-
-#: includes/class-wp-topbar-frontend.php:126
-msgid "Site announcement"
-msgstr ""
-
-#: includes/class-wp-topbar-frontend.php:145
-msgid "Close"
-msgstr ""
-
-#: includes/class-wp-topbar-settings.php:36
-msgid "We use cookies to improve your experience. 🎉 Check out our latest update!"
-msgstr ""
-
-#: includes/class-wp-topbar-settings.php:38
-msgid "Learn more"
+#: includes/views/settings-page.php:259
+msgid "7 days"
 msgstr ""
 
 #: includes/views/settings-page.php:20
 msgid "A fast, theme-proof announcement bar for your site."
 msgstr ""
 
+#: includes/views/settings-page.php:71
+msgid "A single image fills the entire bar."
+msgstr ""
+
+#: includes/views/settings-page.php:203
+msgid "Alt text"
+msgstr ""
+
+#: includes/views/settings-page.php:218
+msgid "Appearance"
+msgstr ""
+
+#: includes/views/settings-page.php:151
+msgid "Background color"
+msgstr ""
+
+#: includes/views/settings-page.php:236
+msgid "Bar stays visible while visitors scroll."
+msgstr ""
+
+#: includes/views/settings-page.php:54
+msgid "Bar type"
+msgstr ""
+
+#: includes/views/settings-page.php:86
+msgid "Basic HTML allowed: <a>, <strong>, <em>, <br>, <span>."
+msgstr ""
+
+#: includes/views/settings-page.php:92
+msgid "Button"
+msgstr ""
+
+#: includes/views/settings-page.php:106
+msgid "Button URL"
+msgstr ""
+
+#: includes/views/settings-page.php:162
+msgid "Button background"
+msgstr ""
+
+#: includes/views/settings-page.php:102
+msgid "Button text"
+msgstr ""
+
+#: includes/views/settings-page.php:166
+msgid "Button text color"
+msgstr ""
+
+#: includes/class-wp-topbar-admin.php:102
+msgid "Choose an image"
+msgstr ""
+
+#: includes/views/settings-page.php:133
+#: includes/views/settings-page.php:192
+msgid "Choose image"
+msgstr ""
+
+#: includes/class-wp-topbar-frontend.php:141
+#: includes/class-wp-topbar-frontend.php:165
+msgid "Close"
+msgstr ""
+
+#: includes/views/settings-page.php:244
+msgid "Close button"
+msgstr ""
+
+#: includes/views/settings-page.php:146
+msgid "Colors"
+msgstr ""
+
+#: includes/views/settings-page.php:65
+msgid "Content bar"
+msgstr ""
+
+#: includes/views/settings-page.php:257
+msgid "Current browser session"
+msgstr ""
+
+#: includes/views/settings-page.php:274
+msgid "Display schedule"
+msgstr ""
+
+#: includes/views/settings-page.php:288
+msgid "End"
+msgstr ""
+
+#: includes/views/settings-page.php:178
+msgid "Full image"
+msgstr ""
+
+#: includes/views/settings-page.php:70
+msgid "Full image bar"
+msgstr ""
+
+#: includes/views/settings-page.php:80
+msgid "General"
+msgstr ""
+
+#: includes/views/settings-page.php:223
+msgid "Height (px)"
+msgstr ""
+
+#: includes/views/settings-page.php:119
+msgid "Image"
+msgstr ""
+
+#: includes/views/settings-page.php:139
+msgid "Image link (optional)"
+msgstr ""
+
+#: includes/class-wp-topbar-settings.php:46
+msgid "Learn more"
+msgstr ""
+
+#: includes/views/settings-page.php:250
+msgid "Let visitors dismiss the bar. Their choice is remembered per browser."
+msgstr ""
+
+#: includes/views/settings-page.php:199
+msgid "Link (optional)"
+msgstr ""
+
 #: includes/views/settings-page.php:27
 msgid "Live preview"
 msgstr ""
 
-#: includes/views/settings-page.php:51
-msgid "General"
-msgstr ""
-
-#: includes/views/settings-page.php:57
-msgid "Turn the top bar on or off across your entire site."
-msgstr ""
-
-#: includes/views/settings-page.php:60
+#: includes/views/settings-page.php:84
 msgid "Message"
 msgstr ""
 
-#: includes/views/settings-page.php:62
-msgid "Basic HTML allowed: <a>, <strong>, <em>, <br>, <span>."
-msgstr ""
-
-#: includes/views/settings-page.php:68
-msgid "Button"
-msgstr ""
-
-#: includes/views/settings-page.php:74
-msgid "Show a call-to-action button next to the message."
-msgstr ""
-
-#: includes/views/settings-page.php:78
-msgid "Button text"
-msgstr ""
-
-#: includes/views/settings-page.php:82
-msgid "Button URL"
-msgstr ""
-
-#: includes/views/settings-page.php:89
-msgid "Open link in a new tab"
-msgstr ""
-
-#: includes/views/settings-page.php:95
-msgid "Image"
-msgstr ""
-
-#: includes/views/settings-page.php:97
-msgid "Optional logo or icon shown before the message."
-msgstr ""
-
-#: includes/views/settings-page.php:109
-msgid "Choose image"
-msgstr ""
-
-#: includes/views/settings-page.php:110
-msgid "Remove"
-msgstr ""
-
-#: includes/views/settings-page.php:115
-msgid "Image link (optional)"
-msgstr ""
-
-#: includes/views/settings-page.php:122
-msgid "Appearance"
-msgstr ""
-
-#: includes/views/settings-page.php:127
-msgid "Background color"
-msgstr ""
-
-#: includes/views/settings-page.php:131
-msgid "Text color"
-msgstr ""
-
-#: includes/views/settings-page.php:138
-msgid "Button background"
-msgstr ""
-
-#: includes/views/settings-page.php:142
-msgid "Button text color"
-msgstr ""
-
-#: includes/views/settings-page.php:149
-msgid "Height (px)"
-msgstr ""
-
-#: includes/views/settings-page.php:161
-msgid "Sticky mode"
-msgstr ""
-
-#: includes/views/settings-page.php:162
-msgid "Bar stays visible while visitors scroll."
-msgstr ""
-
-#: includes/views/settings-page.php:170
-msgid "Close button"
-msgstr ""
-
-#: includes/views/settings-page.php:176
-msgid "Let visitors dismiss the bar. Their choice is remembered per browser."
-msgstr ""
-
-#: includes/views/settings-page.php:179
-msgid "Remember closed for"
-msgstr ""
-
-#: includes/views/settings-page.php:183
-msgid "Current browser session"
-msgstr ""
-
-#: includes/views/settings-page.php:184
-msgid "1 day"
-msgstr ""
-
-#: includes/views/settings-page.php:185
-msgid "7 days"
-msgstr ""
-
-#: includes/views/settings-page.php:186
-msgid "14 days"
-msgstr ""
-
-#: includes/views/settings-page.php:187
-msgid "30 days"
-msgstr ""
-
-#: includes/views/settings-page.php:188
-msgid "Permanently (until reset)"
-msgstr ""
-
-#: includes/views/settings-page.php:200
-msgid "Display schedule"
-msgstr ""
-
-#: includes/views/settings-page.php:206
+#: includes/views/settings-page.php:280
 msgid "Only show the bar within a specific date and time range."
 msgstr ""
 
+#: includes/views/settings-page.php:113
 #: includes/views/settings-page.php:210
+msgid "Open link in a new tab"
+msgstr ""
+
+#: includes/views/settings-page.php:121
+msgid "Optional logo or icon shown before the message."
+msgstr ""
+
+#: includes/views/settings-page.php:262
+msgid "Permanently (until reset)"
+msgstr ""
+
+#: includes/views/settings-page.php:253
+msgid "Remember closed for"
+msgstr ""
+
+#: includes/views/settings-page.php:134
+#: includes/views/settings-page.php:193
+msgid "Remove"
+msgstr ""
+
+#: includes/views/settings-page.php:298
+msgid "Save changes"
+msgstr ""
+
+#: includes/class-wp-topbar-admin.php:60
+msgid "Settings"
+msgstr ""
+
+#: includes/views/settings-page.php:98
+msgid "Show a call-to-action button next to the message."
+msgstr ""
+
+#: includes/class-wp-topbar-frontend.php:136
+#: includes/class-wp-topbar-frontend.php:283
+msgid "Site announcement"
+msgstr ""
+
+#: includes/views/settings-page.php:284
 msgid "Start"
 msgstr ""
 
-#: includes/views/settings-page.php:214
-msgid "End"
+#: includes/views/settings-page.php:235
+msgid "Sticky mode"
 msgstr ""
 
-#: includes/views/settings-page.php:218
+#: includes/views/settings-page.php:155
+msgid "Text color"
+msgstr ""
+
+#: includes/views/settings-page.php:66
+msgid "Text, a button and an optional small logo."
+msgstr ""
+
+#: includes/views/settings-page.php:180
+msgid "This image fills the entire bar. It is cropped to the bar height and scaled to the full width of the page."
+msgstr ""
+
+#: includes/views/settings-page.php:292
 msgid "Times use your site’s configured timezone."
 msgstr ""
 
-#: includes/views/settings-page.php:224
-msgid "Save changes"
+#: includes/class-wp-topbar-admin.php:42
+#: includes/class-wp-topbar-admin.php:43
+#: includes/views/settings-page.php:19
+msgid "Top Bar"
+msgstr ""
+
+#: includes/views/settings-page.php:60
+msgid "Turn the top bar on or off, and choose whether it shows text and a button, or a single full-width image."
+msgstr ""
+
+#: includes/class-wp-topbar-admin.php:103
+msgid "Use this image"
+msgstr ""
+
+#: includes/class-wp-topbar-settings.php:44
+msgid "We use cookies to improve your experience. 🎉 Check out our latest update!"
 msgstr ""

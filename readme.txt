@@ -4,7 +4,7 @@ Tags: top bar, announcement bar, notification bar, sticky bar, banner
 Requires at least: 5.2
 Tested up to: 6.6
 Requires PHP: 7.2
-Stable tag: 1.0.0
+Stable tag: 1.1.0
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
@@ -16,9 +16,11 @@ WP Top Bar adds a clean, theme-proof notification bar to the top of your site. U
 
 **Features**
 
+* Two bar types: a content bar (text + button + small logo) or a full-image bar (a single image fills the entire bar)
 * Custom text with basic inline HTML (links, bold, italic)
 * Optional call-to-action button with adjustable colors
 * Optional image (logo/icon) with an optional link
+* Full-image mode: pick any image to fill the whole bar, with an optional link and alt text
 * Adjustable background, text and button colors
 * Adjustable bar height
 * Sticky mode, so the bar stays visible while visitors scroll
@@ -44,7 +46,11 @@ The close button stores a small flag in the visitor's browser `localStorage` or 
 
 = The bar doesn't show up on the frontend =
 
-Make sure the bar is toggled **on** under **Top Bar → General**, and that your theme calls `wp_body_open()` in its `header.php` (all modern WordPress themes since 2019 do).
+Make sure the bar is toggled **on** under **Top Bar → Bar type**, and that your theme calls `wp_body_open()` in its `header.php` (all modern WordPress themes since 2019 do).
+
+= How does the full-image bar mode work? =
+
+Switch **Bar type** to **Full image bar**, then choose an image. It's cropped to the configured bar height and stretched to the full width of the page. You can optionally link it to a URL and set alt text for accessibility.
 
 = Can I use HTML in the message? =
 
@@ -55,6 +61,9 @@ Yes — `<a>`, `<strong>`, `<em>`, `<br>` and `<span>` are allowed.
 No. The plugin's CSS is scoped and uses forced (`!important`) rules on layout-critical properties, so theme and plugin styles cannot break its layout or colors. It intentionally inherits your theme's body font.
 
 == Changelog ==
+
+= 1.1.0 =
+* Added a full-image bar mode: display a single image across the entire bar, with an optional link and alt text.
 
 = 1.0.0 =
 * Initial release.

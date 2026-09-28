@@ -7,10 +7,17 @@
 
 		var preview = {
 			bar: document.getElementById( 'wptb-bar' ),
+			content: document.getElementById( 'wptb-preview-content' ),
 			image: document.getElementById( 'wptb-preview-image' ),
 			text: document.getElementById( 'wptb-preview-text' ),
 			button: document.getElementById( 'wptb-preview-button' ),
+			fullImageLink: document.getElementById( 'wptb-preview-full-image-link' ),
+			fullImage: document.getElementById( 'wptb-preview-full-image' ),
 		};
+
+		function currentMode() {
+			return $( 'input[name="wptb_options[bar_mode]"]:checked' ).val() || 'content';
+		}
 
 		function updatePreview() {
 			if ( ! preview.bar ) {
@@ -50,6 +57,36 @@
 			}
 		}
 
+		function updateFullImagePreviewNode( url ) {
+			if ( ! preview.fullImage ) {
+				return;
+			}
+
+			if ( url ) {
+				preview.fullImage.src = url;
+			} else {
+				preview.fullImage.removeAttribute( 'src' );
+			}
+		}
+
+		function toggleMode() {
+			var mode = currentMode();
+			var isImageMode = 'image' === mode;
+
+			$( '#wptb-content-fields' ).toggleClass( 'wptb-mode-hidden', isImageMode );
+			$( '#wptb-image-fields' ).toggleClass( 'wptb-mode-hidden', ! isImageMode );
+
+			if ( preview.bar ) {
+				preview.bar.classList.toggle( 'wptb-image-mode', isImageMode );
+			}
+			if ( preview.content ) {
+				preview.content.style.display = isImageMode ? 'none' : '';
+			}
+			if ( preview.fullImageLink ) {
+				preview.fullImageLink.style.display = isImageMode ? 'block' : 'none';
+			}
+		}
+
 		// Color pickers.
 		$( '.wptb-color-field' ).wpColorPicker( {
 			change: function () {
@@ -72,6 +109,10 @@
 			updatePreview();
 		} );
 
+		// Bar mode (content vs. full image) toggle.
+		$( 'input[name="wptb_options[bar_mode]"]' ).on( 'change', toggleMode );
+		toggleMode();
+
 		// Schedule toggle visibility.
 		function toggleSchedule() {
 			var enabled = $( '#wptb-schedule-enabled' ).is( ':checked' );
@@ -80,46 +121,80 @@
 		$( '#wptb-schedule-enabled' ).on( 'change', toggleSchedule );
 		toggleSchedule();
 
-		// Media uploader for the image field.
-		var mediaFrame;
-		$( '#wptb-image-select' ).on( 'click', function ( e ) {
-			e.preventDefault();
+		/**
+		 * Wire up a media-library picker for an image field.
+		 *
+		 * @param {Object} opts Configuration for the picker instance.
+		 */
+		function initImagePicker( opts ) {
+			var mediaFrame;
 
-			if ( mediaFrame ) {
+			$( opts.selectButton ).on( 'click', function ( e ) {
+				e.preventDefault();
+
+				if ( mediaFrame ) {
+					mediaFrame.open();
+					return;
+				}
+
+				mediaFrame = wp.media( {
+					title: wptbAdmin.chooseImageTitle,
+					button: { text: wptbAdmin.useImageText },
+					multiple: false,
+					library: { type: 'image' },
+				} );
+
+				mediaFrame.on( 'select', function () {
+					var attachment = mediaFrame.state().get( 'selection' ).first().toJSON();
+					var thumbSize = ( attachment.sizes && attachment.sizes[ opts.previewSize ] ) ? attachment.sizes[ opts.previewSize ] : null;
+					var previewUrl = thumbSize ? thumbSize.url : attachment.url;
+
+					$( opts.idField ).val( attachment.id );
+					$( opts.previewBox ).html( '<img src="' + previewUrl + '" alt="" />' );
+					$( opts.removeButton ).show();
+					opts.onSelect( attachment.url, previewUrl );
+				} );
+
 				mediaFrame.open();
-				return;
-			}
-
-			mediaFrame = wp.media( {
-				title: wptbAdmin.chooseImageTitle,
-				button: { text: wptbAdmin.useImageText },
-				multiple: false,
-				library: { type: 'image' },
 			} );
 
-			mediaFrame.on( 'select', function () {
-				var attachment = mediaFrame.state().get( 'selection' ).first().toJSON();
-				var url = ( attachment.sizes && attachment.sizes.thumbnail ) ? attachment.sizes.thumbnail.url : attachment.url;
-
-				$( '#wptb-image-id' ).val( attachment.id );
-				$( '#wptb-image-preview' ).html( '<img src="' + url + '" alt="" />' );
-				$( '#wptb-image-remove' ).show();
-				updateImagePreviewNode( url );
+			$( opts.removeButton ).on( 'click', function ( e ) {
+				e.preventDefault();
+				$( opts.idField ).val( '' );
+				$( opts.previewBox ).html( '<span class="dashicons dashicons-format-image"></span>' );
+				$( this ).hide();
+				opts.onSelect( '', '' );
 			} );
+		}
 
-			mediaFrame.open();
+		initImagePicker( {
+			selectButton: '#wptb-image-select',
+			removeButton: '#wptb-image-remove',
+			idField: '#wptb-image-id',
+			previewBox: '#wptb-image-preview',
+			previewSize: 'thumbnail',
+			onSelect: function ( url, previewUrl ) {
+				updateImagePreviewNode( previewUrl );
+			},
 		} );
 
-		$( '#wptb-image-remove' ).on( 'click', function ( e ) {
-			e.preventDefault();
-			$( '#wptb-image-id' ).val( '' );
-			$( '#wptb-image-preview' ).html( '<span class="dashicons dashicons-format-image"></span>' );
-			$( this ).hide();
-			updateImagePreviewNode( '' );
+		initImagePicker( {
+			selectButton: '#wptb-full-image-select',
+			removeButton: '#wptb-full-image-remove',
+			idField: '#wptb-full-image-id',
+			previewBox: '#wptb-full-image-preview',
+			previewSize: 'medium',
+			onSelect: function ( url ) {
+				updateFullImagePreviewNode( url );
+			},
 		} );
 
 		var initialImage = $( '#wptb-image-preview img' ).attr( 'src' );
 		updateImagePreviewNode( initialImage || '' );
+
+		var initialFullImage = $( '#wptb-full-image-preview img' ).attr( 'src' );
+		updateFullImagePreviewNode( initialFullImage || '' );
+
 		updatePreview();
 	} );
 } )( jQuery );

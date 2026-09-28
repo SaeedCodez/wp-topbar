@@ -88,15 +88,22 @@ class WP_Topbar_Frontend {
 			return;
 		}
 
+		$bar_mode          = $this->settings->get( 'bar_mode' );
+		$is_image_mode     = 'image' === $bar_mode;
 		$text              = $this->settings->get( 'text' );
 		$button_enabled    = $this->settings->get( 'button_enabled' ) && $this->settings->get( 'button_text' ) && $this->settings->get( 'button_url' );
 		$image_id          = absint( $this->settings->get( 'image_id' ) );
+		$full_image_id     = absint( $this->settings->get( 'full_image_id' ) );
 		$show_close        = (bool) $this->settings->get( 'show_close' );
 		$sticky            = (bool) $this->settings->get( 'sticky' );
 		$height            = absint( $this->settings->get( 'height' ) );
 		$close_duration    = $this->settings->get( 'close_duration' );
 
-		if ( ! $text && ! $button_enabled && ! $image_id ) {
+		if ( $is_image_mode ) {
+			if ( ! $full_image_id ) {
+				return;
+			}
+		} elseif ( ! $text && ! $button_enabled && ! $image_id ) {
 			return;
 		}
 
@@ -115,6 +122,9 @@ class WP_Topbar_Frontend {
 		if ( $sticky ) {
 			$classes[] = 'wptb-sticky';
 		}
+		if ( $is_image_mode ) {
+			$classes[] = 'wptb-image-mode';
+		}
 		?>
 		<div
 			id="wptb-bar"
@@ -125,22 +135,8 @@ class WP_Topbar_Frontend {
 			role="region"
 			aria-label="<?php esc_attr_e( 'Site announcement', 'wp-topbar' ); ?>"
 		>
-			<div class="wptb-inner">
-				<div class="wptb-content">
-					<?php $this->render_image( $image_id ); ?>
-					<?php if ( $text ) : ?>
-						<span class="wptb-text"><?php echo wp_kses_post( $text ); ?></span>
-					<?php endif; ?>
-					<?php if ( $button_enabled ) : ?>
-						<a
-							class="wptb-button"
-							href="<?php echo esc_url( $this->settings->get( 'button_url' ) ); ?>"
-							<?php echo $this->settings->get( 'button_new_tab' ) ? ' target="_blank" rel="noopener noreferrer"' : ''; ?>
-						>
-							<?php echo esc_html( $this->settings->get( 'button_text' ) ); ?>
-						</a>
-					<?php endif; ?>
-				</div>
+			<?php if ( $is_image_mode ) : ?>
+				<?php $this->render_full_image( $full_image_id ); ?>
 				<?php if ( $show_close ) : ?>
 					<button type="button" class="wptb-close" aria-label="<?php esc_attr_e( 'Close', 'wp-topbar' ); ?>">
 						<svg width="12" height="12" viewBox="0 0 12 12" fill="none" aria-hidden="true" focusable="false">
@@ -148,7 +144,32 @@ class WP_Topbar_Frontend {
 						</svg>
 					</button>
 				<?php endif; ?>
-			</div>
+			<?php else : ?>
+				<div class="wptb-inner">
+					<div class="wptb-content">
+						<?php $this->render_image( $image_id ); ?>
+						<?php if ( $text ) : ?>
+							<span class="wptb-text"><?php echo wp_kses_post( $text ); ?></span>
+						<?php endif; ?>
+						<?php if ( $button_enabled ) : ?>
+							<a
+								class="wptb-button"
+								href="<?php echo esc_url( $this->settings->get( 'button_url' ) ); ?>"
+								<?php echo $this->settings->get( 'button_new_tab' ) ? ' target="_blank" rel="noopener noreferrer"' : ''; ?>
+							>
+								<?php echo esc_html( $this->settings->get( 'button_text' ) ); ?>
+							</a>
+						<?php endif; ?>
+					</div>
+					<?php if ( $show_close ) : ?>
+						<button type="button" class="wptb-close" aria-label="<?php esc_attr_e( 'Close', 'wp-topbar' ); ?>">
+							<svg width="12" height="12" viewBox="0 0 12 12" fill="none" aria-hidden="true" focusable="false">
+								<path d="M1 1L11 11M11 1L1 11" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+							</svg>
+						</button>
+					<?php endif; ?>
+				</div>
+			<?php endif; ?>
 		</div>
 		<?php if ( $show_close ) : ?>
 		<script>
@@ -223,6 +244,43 @@ class WP_Topbar_Frontend {
 			printf(
 				'<a class="wptb-image-link" href="%s">%s</a>',
 				esc_url( $image_link ),
+				$image_html // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
+			);
+		} else {
+			echo $image_html; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
+		}
+	}
+
+	/**
+	 * Render a full-bleed image that fills the entire bar (image-based mode).
+	 *
+	 * @param int $image_id Attachment ID.
+	 */
+	private function render_full_image( $image_id ) {
+		$alt = $this->settings->get( 'full_image_alt' );
+
+		$image_html = wp_get_attachment_image(
+			$image_id,
+			'full',
+			false,
+			array(
+				'class' => 'wptb-full-image',
+				'alt'   => $alt ? $alt : '',
+			)
+		);
+
+		if ( ! $image_html ) {
+			return;
+		}
+
+		$link = $this->settings->get( 'full_image_link' );
+
+		if ( $link ) {
+			printf(
+				'<a class="wptb-full-image-link" href="%1$s"%2$s aria-label="%3$s">%4$s</a>',
+				esc_url( $link ),
+				$this->settings->get( 'full_image_new_tab' ) ? ' target="_blank" rel="noopener noreferrer"' : '',
+				esc_attr( $alt ? $alt : __( 'Site announcement', 'wp-topbar' ) ),
 				$image_html // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
 			);
 		} else {

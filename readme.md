@@ -6,6 +6,7 @@ See [`readme.txt`](readme.txt) for the full WordPress plugin readme (features, i
 
 ## Highlights
 
+- Two bar types: content bar (text + button + small logo) or a full-image bar
 - Custom message + button with adjustable colors
 - Optional image/logo
 - Sticky mode with adjustable height

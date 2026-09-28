@@ -3,7 +3,7 @@
  * Plugin Name:       WP Top Bar
  * Plugin URI:        https://github.com/saeedcodez/wp-topbar
  * Description:       A lightweight, fast top announcement bar with a custom message, button, image, sticky mode and a scheduling window. Styles are force-applied so themes and other plugins can't override them.
- * Version:           1.0.0
+ * Version:           1.1.0
  * Requires at least: 5.2
  * Requires PHP:      7.2
  * Author:            SaeedCodez
@@ -17,7 +17,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit; // No direct access.
 }
 
-define( 'WPTB_VERSION', '1.0.0' );
+define( 'WPTB_VERSION', '1.1.0' );
 define( 'WPTB_FILE', __FILE__ );
 define( 'WPTB_PATH', plugin_dir_path( __FILE__ ) );
 define( 'WPTB_URL', plugin_dir_url( __FILE__ ) );

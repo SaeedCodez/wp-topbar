@@ -300,6 +300,66 @@ textarea.wptb-input {
 	font-size: 12px;
 }
 
+.wptb-image-preview-wide {
+	width: 140px;
+}
+
+/* Bar type / mode switcher */
+.wptb-mode-choice {
+	display: grid;
+	grid-template-columns: 1fr 1fr;
+	gap: 12px;
+}
+
+.wptb-mode-option {
+	position: relative;
+	display: flex;
+	flex-direction: column;
+	gap: 4px;
+	padding: 14px 16px;
+	border: 1px solid #e2e2e2;
+	border-radius: 10px;
+	cursor: pointer;
+	transition: border-color 0.15s ease, background-color 0.15s ease;
+}
+
+.wptb-mode-option:hover {
+	border-color: #ccc;
+}
+
+.wptb-mode-option input {
+	position: absolute;
+	top: 14px;
+	right: 14px;
+	margin: 0;
+	accent-color: #0a0a0a;
+}
+
+.wptb-mode-option:has(input:checked) {
+	border-color: #0a0a0a;
+	background: #fafafa;
+	box-shadow: 0 0 0 1px #0a0a0a;
+}
+
+.wptb-mode-option-title {
+	font-size: 13px;
+	font-weight: 600;
+	padding-right: 24px;
+}
+
+.wptb-mode-option-desc {
+	font-size: 12px;
+	color: #888;
+}
+
+.wptb-mode-fields {
+	display: contents;
+}
+
+.wptb-mode-fields.wptb-mode-hidden {
+	display: none;
+}
+
 .wptb-schedule-fields {
 	transition: opacity 0.15s ease;
 }

@@ -94,6 +94,48 @@ body.admin-bar #wptb-bar.wptb-sticky {
 	vertical-align: middle !important;
 }
 
+/* Image-based bar mode: the image fills the entire bar. */
+#wptb-bar.wptb-image-mode {
+	padding: 0 !important;
+	overflow: hidden !important;
+	line-height: 0 !important;
+	font-size: 0 !important;
+}
+
+#wptb-bar .wptb-full-image-link {
+	display: block !important;
+	width: 100% !important;
+	height: var(--wptb-height, 44px) !important;
+	margin: 0 !important;
+	padding: 0 !important;
+	border: 0 !important;
+}
+
+#wptb-bar .wptb-full-image {
+	display: block !important;
+	width: 100% !important;
+	max-width: none !important;
+	height: var(--wptb-height, 44px) !important;
+	object-fit: cover !important;
+	object-position: center !important;
+	margin: 0 !important;
+	padding: 0 !important;
+	border: 0 !important;
+	border-radius: 0 !important;
+	vertical-align: top !important;
+}
+
+#wptb-bar.wptb-image-mode .wptb-close {
+	background-color: rgba(0, 0, 0, 0.35) !important;
+	color: #fff !important;
+	opacity: 1 !important;
+}
+
+#wptb-bar.wptb-image-mode .wptb-close:hover,
+#wptb-bar.wptb-image-mode .wptb-close:focus {
+	background-color: rgba(0, 0, 0, 0.55) !important;
+}
+
 #wptb-bar .wptb-text {
 	display: inline !important;
 	color: inherit !important;

@@ -19,6 +19,13 @@ class WP_Topbar_Settings {
 	public static $close_durations = array( 'session', '1', '7', '14', '30', 'permanent' );
 
 	/**
+	 * Allowed values for the bar content mode.
+	 *
+	 * @var string[]
+	 */
+	public static $bar_modes = array( 'content', 'image' );
+
+	/**
 	 * Cached options.
 	 *
 	 * @var array|null
@@ -33,6 +40,7 @@ class WP_Topbar_Settings {
 	public static function get_defaults() {
 		return array(
 			'enabled'            => false,
+			'bar_mode'           => 'content',
 			'text'               => __( 'We use cookies to improve your experience. 🎉 Check out our latest update!', 'wp-topbar' ),
 			'button_enabled'     => true,
 			'button_text'        => __( 'Learn more', 'wp-topbar' ),
@@ -40,6 +48,10 @@ class WP_Topbar_Settings {
 			'button_new_tab'     => false,
 			'image_id'           => 0,
 			'image_link'         => '',
+			'full_image_id'      => 0,
+			'full_image_alt'     => '',
+			'full_image_link'    => '',
+			'full_image_new_tab' => false,
 			'bg_color'           => '#0a0a0a',
 			'text_color'         => '#ffffff',
 			'button_bg_color'    => '#ffffff',
@@ -93,6 +105,9 @@ class WP_Topbar_Settings {
 		$output  = array();
 
 		$output['enabled']  = ! empty( $input['enabled'] );
+		$output['bar_mode'] = ( isset( $input['bar_mode'] ) && in_array( $input['bar_mode'], self::$bar_modes, true ) )
+			? $input['bar_mode']
+			: $current['bar_mode'];
 		$output['text']     = isset( $input['text'] ) ? wp_kses(
 			wp_unslash( $input['text'] ),
 			array(
@@ -115,6 +130,11 @@ class WP_Topbar_Settings {
 
 		$output['image_id']   = isset( $input['image_id'] ) ? absint( $input['image_id'] ) : 0;
 		$output['image_link'] = isset( $input['image_link'] ) ? esc_url_raw( trim( wp_unslash( $input['image_link'] ) ) ) : '';
+
+		$output['full_image_id']      = isset( $input['full_image_id'] ) ? absint( $input['full_image_id'] ) : 0;
+		$output['full_image_alt']     = isset( $input['full_image_alt'] ) ? sanitize_text_field( wp_unslash( $input['full_image_alt'] ) ) : '';
+		$output['full_image_link']    = isset( $input['full_image_link'] ) ? esc_url_raw( trim( wp_unslash( $input['full_image_link'] ) ) ) : '';
+		$output['full_image_new_tab'] = ! empty( $input['full_image_new_tab'] );
 
 		foreach ( array( 'bg_color', 'text_color', 'button_bg_color', 'button_text_color' ) as $color_key ) {
 			$color               = isset( $input[ $color_key ] ) ? sanitize_hex_color( wp_unslash( $input[ $color_key ] ) ) : '';

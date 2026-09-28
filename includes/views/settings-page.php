@@ -27,16 +27,19 @@ if ( ! defined( 'ABSPATH' ) ) {
 		<p class="wptb-preview-label"><?php esc_html_e( 'Live preview', 'wp-topbar' ); ?></p>
 		<div class="wptb-preview-frame">
 			<div id="wptb-bar" class="wptb-bar wptb-preview-bar">
-				<div class="wptb-inner">
+				<div id="wptb-preview-content" class="wptb-inner">
 					<div class="wptb-content">
 						<img id="wptb-preview-image" class="wptb-image" src="" alt="" style="display:none;" />
 						<span id="wptb-preview-text" class="wptb-text"></span>
 						<a id="wptb-preview-button" class="wptb-button" href="#" onclick="return false;"></a>
 					</div>
-					<span class="wptb-close" aria-hidden="true">
-						<svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M1 1L11 11M11 1L1 11" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
-					</span>
 				</div>
+				<a id="wptb-preview-full-image-link" class="wptb-full-image-link" href="#" onclick="return false;" style="display:none;">
+					<img id="wptb-preview-full-image" class="wptb-full-image" src="" alt="" />
+				</a>
+				<span class="wptb-close" aria-hidden="true">
+					<svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M1 1L11 11M11 1L1 11" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+				</span>
 			</div>
 		</div>
 	</div>
@@ -48,101 +51,172 @@ if ( ! defined( 'ABSPATH' ) ) {
 
 			<section class="wptb-card">
 				<header class="wptb-card-header">
-					<h2><?php esc_html_e( 'General', 'wp-topbar' ); ?></h2>
+					<h2><?php esc_html_e( 'Bar type', 'wp-topbar' ); ?></h2>
 					<label class="wptb-switch">
 						<input type="checkbox" name="wptb_options[enabled]" value="1" <?php checked( $options['enabled'] ); ?> />
 						<span class="wptb-switch-slider"></span>
 					</label>
 				</header>
-				<p class="wptb-card-desc"><?php esc_html_e( 'Turn the top bar on or off across your entire site.', 'wp-topbar' ); ?></p>
+				<p class="wptb-card-desc"><?php esc_html_e( 'Turn the top bar on or off, and choose whether it shows text and a button, or a single full-width image.', 'wp-topbar' ); ?></p>
 
-				<div class="wptb-field">
-					<label for="wptb-text"><?php esc_html_e( 'Message', 'wp-topbar' ); ?></label>
-					<textarea id="wptb-text" name="wptb_options[text]" rows="3" class="wptb-input" data-preview="text"><?php echo esc_textarea( $options['text'] ); ?></textarea>
-					<p class="wptb-hint"><?php esc_html_e( 'Basic HTML allowed: <a>, <strong>, <em>, <br>, <span>.', 'wp-topbar' ); ?></p>
-				</div>
-			</section>
-
-			<section class="wptb-card">
-				<header class="wptb-card-header">
-					<h2><?php esc_html_e( 'Button', 'wp-topbar' ); ?></h2>
-					<label class="wptb-switch">
-						<input type="checkbox" name="wptb_options[button_enabled]" value="1" <?php checked( $options['button_enabled'] ); ?> />
-						<span class="wptb-switch-slider"></span>
+				<div class="wptb-mode-choice">
+					<label class="wptb-mode-option">
+						<input type="radio" name="wptb_options[bar_mode]" value="content" <?php checked( $options['bar_mode'], 'content' ); ?> />
+						<span class="wptb-mode-option-title"><?php esc_html_e( 'Content bar', 'wp-topbar' ); ?></span>
+						<span class="wptb-mode-option-desc"><?php esc_html_e( 'Text, a button and an optional small logo.', 'wp-topbar' ); ?></span>
 					</label>
-				</header>
-				<p class="wptb-card-desc"><?php esc_html_e( 'Show a call-to-action button next to the message.', 'wp-topbar' ); ?></p>
-
-				<div class="wptb-field-row">
-					<div class="wptb-field">
-						<label for="wptb-button-text"><?php esc_html_e( 'Button text', 'wp-topbar' ); ?></label>
-						<input type="text" id="wptb-button-text" class="wptb-input" data-preview="button-text" name="wptb_options[button_text]" value="<?php echo esc_attr( $options['button_text'] ); ?>" />
-					</div>
-					<div class="wptb-field">
-						<label for="wptb-button-url"><?php esc_html_e( 'Button URL', 'wp-topbar' ); ?></label>
-						<input type="url" id="wptb-button-url" class="wptb-input" name="wptb_options[button_url]" value="<?php echo esc_attr( $options['button_url'] ); ?>" placeholder="https://" />
-					</div>
-				</div>
-
-				<label class="wptb-checkbox">
-					<input type="checkbox" name="wptb_options[button_new_tab]" value="1" <?php checked( $options['button_new_tab'] ); ?> />
-					<?php esc_html_e( 'Open link in a new tab', 'wp-topbar' ); ?>
-				</label>
-			</section>
-
-			<section class="wptb-card">
-				<header class="wptb-card-header">
-					<h2><?php esc_html_e( 'Image', 'wp-topbar' ); ?></h2>
-				</header>
-				<p class="wptb-card-desc"><?php esc_html_e( 'Optional logo or icon shown before the message.', 'wp-topbar' ); ?></p>
-
-				<div class="wptb-image-picker">
-					<div class="wptb-image-preview" id="wptb-image-preview">
-						<?php if ( $options['image_id'] ) : ?>
-							<?php echo wp_get_attachment_image( $options['image_id'], 'thumbnail' ); ?>
-						<?php else : ?>
-							<span class="dashicons dashicons-format-image"></span>
-						<?php endif; ?>
-					</div>
-					<div class="wptb-image-actions">
-						<input type="hidden" id="wptb-image-id" name="wptb_options[image_id]" value="<?php echo esc_attr( $options['image_id'] ); ?>" />
-						<button type="button" class="button" id="wptb-image-select"><?php esc_html_e( 'Choose image', 'wp-topbar' ); ?></button>
-						<button type="button" class="button-link-delete" id="wptb-image-remove" <?php echo $options['image_id'] ? '' : 'style="display:none;"'; ?>><?php esc_html_e( 'Remove', 'wp-topbar' ); ?></button>
-					</div>
-				</div>
-
-				<div class="wptb-field">
-					<label for="wptb-image-link"><?php esc_html_e( 'Image link (optional)', 'wp-topbar' ); ?></label>
-					<input type="url" id="wptb-image-link" class="wptb-input" name="wptb_options[image_link]" value="<?php echo esc_attr( $options['image_link'] ); ?>" placeholder="https://" />
+					<label class="wptb-mode-option">
+						<input type="radio" name="wptb_options[bar_mode]" value="image" <?php checked( $options['bar_mode'], 'image' ); ?> />
+						<span class="wptb-mode-option-title"><?php esc_html_e( 'Full image bar', 'wp-topbar' ); ?></span>
+						<span class="wptb-mode-option-desc"><?php esc_html_e( 'A single image fills the entire bar.', 'wp-topbar' ); ?></span>
+					</label>
 				</div>
 			</section>
+
+			<div id="wptb-content-fields" class="wptb-mode-fields">
+
+				<section class="wptb-card">
+					<header class="wptb-card-header">
+						<h2><?php esc_html_e( 'General', 'wp-topbar' ); ?></h2>
+					</header>
+
+					<div class="wptb-field">
+						<label for="wptb-text"><?php esc_html_e( 'Message', 'wp-topbar' ); ?></label>
+						<textarea id="wptb-text" name="wptb_options[text]" rows="3" class="wptb-input" data-preview="text"><?php echo esc_textarea( $options['text'] ); ?></textarea>
+						<p class="wptb-hint"><?php esc_html_e( 'Basic HTML allowed: <a>, <strong>, <em>, <br>, <span>.', 'wp-topbar' ); ?></p>
+					</div>
+				</section>
+
+				<section class="wptb-card">
+					<header class="wptb-card-header">
+						<h2><?php esc_html_e( 'Button', 'wp-topbar' ); ?></h2>
+						<label class="wptb-switch">
+							<input type="checkbox" name="wptb_options[button_enabled]" value="1" <?php checked( $options['button_enabled'] ); ?> />
+							<span class="wptb-switch-slider"></span>
+						</label>
+					</header>
+					<p class="wptb-card-desc"><?php esc_html_e( 'Show a call-to-action button next to the message.', 'wp-topbar' ); ?></p>
+
+					<div class="wptb-field-row">
+						<div class="wptb-field">
+							<label for="wptb-button-text"><?php esc_html_e( 'Button text', 'wp-topbar' ); ?></label>
+							<input type="text" id="wptb-button-text" class="wptb-input" data-preview="button-text" name="wptb_options[button_text]" value="<?php echo esc_attr( $options['button_text'] ); ?>" />
+						</div>
+						<div class="wptb-field">
+							<label for="wptb-button-url"><?php esc_html_e( 'Button URL', 'wp-topbar' ); ?></label>
+							<input type="url" id="wptb-button-url" class="wptb-input" name="wptb_options[button_url]" value="<?php echo esc_attr( $options['button_url'] ); ?>" placeholder="https://" />
+						</div>
+					</div>
+
+					<label class="wptb-checkbox">
+						<input type="checkbox" name="wptb_options[button_new_tab]" value="1" <?php checked( $options['button_new_tab'] ); ?> />
+						<?php esc_html_e( 'Open link in a new tab', 'wp-topbar' ); ?>
+					</label>
+				</section>
+
+				<section class="wptb-card">
+					<header class="wptb-card-header">
+						<h2><?php esc_html_e( 'Image', 'wp-topbar' ); ?></h2>
+					</header>
+					<p class="wptb-card-desc"><?php esc_html_e( 'Optional logo or icon shown before the message.', 'wp-topbar' ); ?></p>
+
+					<div class="wptb-image-picker">
+						<div class="wptb-image-preview" id="wptb-image-preview">
+							<?php if ( $options['image_id'] ) : ?>
+								<?php echo wp_get_attachment_image( $options['image_id'], 'thumbnail' ); ?>
+							<?php else : ?>
+								<span class="dashicons dashicons-format-image"></span>
+							<?php endif; ?>
+						</div>
+						<div class="wptb-image-actions">
+							<input type="hidden" id="wptb-image-id" name="wptb_options[image_id]" value="<?php echo esc_attr( $options['image_id'] ); ?>" />
+							<button type="button" class="button" id="wptb-image-select"><?php esc_html_e( 'Choose image', 'wp-topbar' ); ?></button>
+							<button type="button" class="button-link-delete" id="wptb-image-remove" <?php echo $options['image_id'] ? '' : 'style="display:none;"'; ?>><?php esc_html_e( 'Remove', 'wp-topbar' ); ?></button>
+						</div>
+					</div>
+
+					<div class="wptb-field">
+						<label for="wptb-image-link"><?php esc_html_e( 'Image link (optional)', 'wp-topbar' ); ?></label>
+						<input type="url" id="wptb-image-link" class="wptb-input" name="wptb_options[image_link]" value="<?php echo esc_attr( $options['image_link'] ); ?>" placeholder="https://" />
+					</div>
+				</section>
+
+				<section class="wptb-card">
+					<header class="wptb-card-header">
+						<h2><?php esc_html_e( 'Colors', 'wp-topbar' ); ?></h2>
+					</header>
+
+					<div class="wptb-field-row">
+						<div class="wptb-field">
+							<label for="wptb-bg-color"><?php esc_html_e( 'Background color', 'wp-topbar' ); ?></label>
+							<input type="text" id="wptb-bg-color" class="wptb-color-field" data-preview="bg" name="wptb_options[bg_color]" value="<?php echo esc_attr( $options['bg_color'] ); ?>" />
+						</div>
+						<div class="wptb-field">
+							<label for="wptb-text-color"><?php esc_html_e( 'Text color', 'wp-topbar' ); ?></label>
+							<input type="text" id="wptb-text-color" class="wptb-color-field" data-preview="color" name="wptb_options[text_color]" value="<?php echo esc_attr( $options['text_color'] ); ?>" />
+						</div>
+					</div>
+
+					<div class="wptb-field-row">
+						<div class="wptb-field">
+							<label for="wptb-button-bg-color"><?php esc_html_e( 'Button background', 'wp-topbar' ); ?></label>
+							<input type="text" id="wptb-button-bg-color" class="wptb-color-field" data-preview="btn-bg" name="wptb_options[button_bg_color]" value="<?php echo esc_attr( $options['button_bg_color'] ); ?>" />
+						</div>
+						<div class="wptb-field">
+							<label for="wptb-button-text-color"><?php esc_html_e( 'Button text color', 'wp-topbar' ); ?></label>
+							<input type="text" id="wptb-button-text-color" class="wptb-color-field" data-preview="btn-color" name="wptb_options[button_text_color]" value="<?php echo esc_attr( $options['button_text_color'] ); ?>" />
+						</div>
+					</div>
+				</section>
+
+			</div>
+
+			<div id="wptb-image-fields" class="wptb-mode-fields">
+
+				<section class="wptb-card">
+					<header class="wptb-card-header">
+						<h2><?php esc_html_e( 'Full image', 'wp-topbar' ); ?></h2>
+					</header>
+					<p class="wptb-card-desc"><?php esc_html_e( 'This image fills the entire bar. It is cropped to the bar height and scaled to the full width of the page.', 'wp-topbar' ); ?></p>
+
+					<div class="wptb-image-picker">
+						<div class="wptb-image-preview wptb-image-preview-wide" id="wptb-full-image-preview">
+							<?php if ( $options['full_image_id'] ) : ?>
+								<?php echo wp_get_attachment_image( $options['full_image_id'], 'medium' ); ?>
+							<?php else : ?>
+								<span class="dashicons dashicons-format-image"></span>
+							<?php endif; ?>
+						</div>
+						<div class="wptb-image-actions">
+							<input type="hidden" id="wptb-full-image-id" name="wptb_options[full_image_id]" value="<?php echo esc_attr( $options['full_image_id'] ); ?>" />
+							<button type="button" class="button" id="wptb-full-image-select"><?php esc_html_e( 'Choose image', 'wp-topbar' ); ?></button>
+							<button type="button" class="button-link-delete" id="wptb-full-image-remove" <?php echo $options['full_image_id'] ? '' : 'style="display:none;"'; ?>><?php esc_html_e( 'Remove', 'wp-topbar' ); ?></button>
+						</div>
+					</div>
+
+					<div class="wptb-field-row">
+						<div class="wptb-field">
+							<label for="wptb-full-image-link"><?php esc_html_e( 'Link (optional)', 'wp-topbar' ); ?></label>
+							<input type="url" id="wptb-full-image-link" class="wptb-input" name="wptb_options[full_image_link]" value="<?php echo esc_attr( $options['full_image_link'] ); ?>" placeholder="https://" />
+						</div>
+						<div class="wptb-field">
+							<label for="wptb-full-image-alt"><?php esc_html_e( 'Alt text', 'wp-topbar' ); ?></label>
+							<input type="text" id="wptb-full-image-alt" class="wptb-input" name="wptb_options[full_image_alt]" value="<?php echo esc_attr( $options['full_image_alt'] ); ?>" />
+						</div>
+					</div>
+
+					<label class="wptb-checkbox">
+						<input type="checkbox" name="wptb_options[full_image_new_tab]" value="1" <?php checked( $options['full_image_new_tab'] ); ?> />
+						<?php esc_html_e( 'Open link in a new tab', 'wp-topbar' ); ?>
+					</label>
+				</section>
+
+			</div>
 
 			<section class="wptb-card">
 				<header class="wptb-card-header">
 					<h2><?php esc_html_e( 'Appearance', 'wp-topbar' ); ?></h2>
 				</header>
-
-				<div class="wptb-field-row">
-					<div class="wptb-field">
-						<label for="wptb-bg-color"><?php esc_html_e( 'Background color', 'wp-topbar' ); ?></label>
-						<input type="text" id="wptb-bg-color" class="wptb-color-field" data-preview="bg" name="wptb_options[bg_color]" value="<?php echo esc_attr( $options['bg_color'] ); ?>" />
-					</div>
-					<div class="wptb-field">
-						<label for="wptb-text-color"><?php esc_html_e( 'Text color', 'wp-topbar' ); ?></label>
-						<input type="text" id="wptb-text-color" class="wptb-color-field" data-preview="color" name="wptb_options[text_color]" value="<?php echo esc_attr( $options['text_color'] ); ?>" />
-					</div>
-				</div>
-
-				<div class="wptb-field-row">
-					<div class="wptb-field">
-						<label for="wptb-button-bg-color"><?php esc_html_e( 'Button background', 'wp-topbar' ); ?></label>
-						<input type="text" id="wptb-button-bg-color" class="wptb-color-field" data-preview="btn-bg" name="wptb_options[button_bg_color]" value="<?php echo esc_attr( $options['button_bg_color'] ); ?>" />
-					</div>
-					<div class="wptb-field">
-						<label for="wptb-button-text-color"><?php esc_html_e( 'Button text color', 'wp-topbar' ); ?></label>
-						<input type="text" id="wptb-button-text-color" class="wptb-color-field" data-preview="btn-color" name="wptb_options[button_text_color]" value="<?php echo esc_attr( $options['button_text_color'] ); ?>" />
-					</div>
-				</div>
 
 				<div class="wptb-field-row">
 					<div class="wptb-field">
