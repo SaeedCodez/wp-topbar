@@ -259,19 +259,21 @@ class WP_Topbar_Frontend {
 	private function render_full_image( $image_id ) {
 		$alt = $this->settings->get( 'full_image_alt' );
 
-		$image_html = wp_get_attachment_image(
-			$image_id,
-			'full',
-			false,
-			array(
-				'class' => 'wptb-full-image',
-				'alt'   => $alt ? $alt : '',
-			)
-		);
+		// Build the <img> manually (instead of wp_get_attachment_image()) so no
+		// srcset/sizes attributes are added: those let the browser pick one of
+		// WordPress' smaller auto-generated sizes on narrower viewports, when
+		// the original, full-size image should always be shown on every device.
+		$src = wp_get_attachment_image_url( $image_id, 'full' );
 
-		if ( ! $image_html ) {
+		if ( ! $src ) {
 			return;
 		}
+
+		$image_html = sprintf(
+			'<img src="%1$s" class="wptb-full-image" alt="%2$s" />',
+			esc_url( $src ),
+			esc_attr( $alt ? $alt : '' )
+		);
 
 		$link = $this->settings->get( 'full_image_link' );
 

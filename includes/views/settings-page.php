@@ -182,7 +182,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 					<div class="wptb-image-picker">
 						<div class="wptb-image-preview wptb-image-preview-wide" id="wptb-full-image-preview">
 							<?php if ( $options['full_image_id'] ) : ?>
-								<?php echo wp_get_attachment_image( $options['full_image_id'], 'medium' ); ?>
+								<?php echo wp_get_attachment_image( $options['full_image_id'], 'full' ); ?>
 							<?php else : ?>
 								<span class="dashicons dashicons-format-image"></span>
 							<?php endif; ?>

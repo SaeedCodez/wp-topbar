@@ -183,7 +183,7 @@
 			removeButton: '#wptb-full-image-remove',
 			idField: '#wptb-full-image-id',
 			previewBox: '#wptb-full-image-preview',
-			previewSize: 'medium',
+			previewSize: 'full',
 			onSelect: function ( url ) {
 				updateFullImagePreviewNode( url );
 			},
