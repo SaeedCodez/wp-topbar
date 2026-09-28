@@ -12,7 +12,7 @@ A lightweight, fast top announcement bar with a custom message, button, image, s
 
 == Description ==
 
-WP Top Bar adds a clean, theme-proof notification bar to the top of your site. Use it for announcements, promotions, cookie notices, or time-limited offers.
+WP Top Bar adds a clean, lightweight notification bar to the top of your site. Use it for announcements, promotions, cookie notices, or time-limited offers.
 
 **Features**
 
@@ -58,7 +58,7 @@ Yes — `<a>`, `<strong>`, `<em>`, `<br>` and `<span>` are allowed.
 
 = Will the bar's styling clash with my theme? =
 
-No. All of the plugin's CSS is scoped to the bar's `#wptb-bar` ID, so ordinary theme and plugin styles cannot break its layout or colors, while you can still customize it with your own CSS. It intentionally inherits your theme's body font.
+No. All of the plugin's CSS is scoped to the bar's `#wptb-bar` ID, so it doesn't clash with typical theme and plugin styles, and you can still customize it with your own CSS. It intentionally inherits your theme's body font.
 
 == Changelog ==
 

@@ -17,7 +17,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 			<span class="wptb-logo dashicons dashicons-megaphone" aria-hidden="true"></span>
 			<div>
 				<h1><?php esc_html_e( 'Top Bar', 'wp-topbar' ); ?></h1>
-				<p><?php esc_html_e( 'A fast, theme-proof announcement bar for your site.', 'wp-topbar' ); ?></p>
+				<p><?php esc_html_e( 'A fast, lightweight announcement bar for your site.', 'wp-topbar' ); ?></p>
 			</div>
 		</div>
 		<span class="wptb-version"><?php echo esc_html( 'v' . WPTB_VERSION ); ?></span>

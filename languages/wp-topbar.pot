@@ -18,7 +18,7 @@ msgstr ""
 
 #. Description of the plugin
 #: wp-topbar.php
-msgid "A lightweight, fast top announcement bar with a custom message, button, image, sticky mode and a scheduling window. Styles are force-applied so themes and other plugins can't override them."
+msgid "A lightweight, fast top announcement bar with a custom message, button, image, sticky mode and a scheduling window."
 msgstr ""
 
 #. Author of the plugin
@@ -43,7 +43,7 @@ msgid "7 days"
 msgstr ""
 
 #: includes/views/settings-page.php:20
-msgid "A fast, theme-proof announcement bar for your site."
+msgid "A fast, lightweight announcement bar for your site."
 msgstr ""
 
 #: includes/views/settings-page.php:71

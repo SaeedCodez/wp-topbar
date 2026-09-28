@@ -1,6 +1,6 @@
 # WP Top Bar
 
-A lightweight, fast WordPress plugin that adds a theme-proof announcement bar to the top of your site: custom text, a call-to-action button, an optional image, sticky mode, adjustable height, a dismissible close button with a remembered state, and a display schedule.
+A lightweight, fast WordPress plugin that adds a clean announcement bar to the top of your site: custom text, a call-to-action button, an optional image, sticky mode, adjustable height, a dismissible close button with a remembered state, and a display schedule.
 
 See [`readme.txt`](readme.txt) for the full WordPress plugin readme (features, installation, FAQ).
 

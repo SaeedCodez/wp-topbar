@@ -20,8 +20,8 @@ msgstr "نوار بالای وردپرس"
 
 #. Description of the plugin
 #: wp-topbar.php
-msgid "A lightweight, fast top announcement bar with a custom message, button, image, sticky mode and a scheduling window. Styles are force-applied so themes and other plugins can't override them."
-msgstr "یک نوار اطلاعیه سبک و سریع در بالای سایت با متن دلخواه، دکمه، تصویر، حالت چسبان و بازه زمانی نمایش. استایل‌ها به‌صورت اجباری اعمال می‌شوند تا قالب یا افزونه‌های دیگر نتوانند آن‌ها را بازنویسی کنند."
+msgid "A lightweight, fast top announcement bar with a custom message, button, image, sticky mode and a scheduling window."
+msgstr "یک نوار اطلاعیه سبک و سریع در بالای سایت با متن دلخواه، دکمه، تصویر، حالت چسبان و بازه زمانی نمایش."
 
 #. Author of the plugin
 #: wp-topbar.php
@@ -45,8 +45,8 @@ msgid "7 days"
 msgstr "۷ روز"
 
 #: includes/views/settings-page.php:20
-msgid "A fast, theme-proof announcement bar for your site."
-msgstr "یک نوار اطلاعیه سریع و مقاوم در برابر قالب برای سایت شما."
+msgid "A fast, lightweight announcement bar for your site."
+msgstr "یک نوار اطلاعیه سریع و سبک برای سایت شما."
 
 #: includes/views/settings-page.php:71
 msgid "A single image fills the entire bar."
