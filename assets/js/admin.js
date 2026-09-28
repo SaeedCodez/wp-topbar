@@ -19,6 +19,12 @@
 			return $( 'input[name="wptb_options[bar_mode]"]:checked' ).val() || 'content';
 		}
 
+		// topbar.css sets `display` with !important on the button and logo,
+		// which beats a plain inline style, so toggle with the same priority.
+		function setDisplay( el, value ) {
+			el.style.setProperty( 'display', value, 'important' );
+		}
+
 		function updatePreview() {
 			if ( ! preview.bar ) {
 				return;
@@ -39,7 +45,7 @@
 				var buttonEnabled = $( 'input[name="wptb_options[button_enabled]"]' ).is( ':checked' );
 				var buttonText = $( '#wptb-button-text' ).val();
 				preview.button.textContent = buttonText;
-				preview.button.style.display = buttonEnabled && buttonText ? 'inline-flex' : 'none';
+				setDisplay( preview.button, buttonEnabled && buttonText ? 'inline-flex' : 'none' );
 			}
 		}
 
@@ -50,9 +56,9 @@
 
 			if ( url ) {
 				preview.image.src = url;
-				preview.image.style.display = 'inline-block';
+				setDisplay( preview.image, 'inline-block' );
 			} else {
-				preview.image.style.display = 'none';
+				setDisplay( preview.image, 'none' );
 				preview.image.removeAttribute( 'src' );
 			}
 		}
