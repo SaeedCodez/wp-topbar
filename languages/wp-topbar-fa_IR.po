@@ -1,0 +1,219 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: WP Top Bar 1.0.0\n"
+"Report-Msgid-Bugs-To: https://github.com/saeedcodez/wp-topbar/issues\n"
+"POT-Creation-Date: 2026-09-28T00:00:00+00:00\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"PO-Revision-Date: 2026-09-28T00:00:00+00:00\n"
+"Language: fa_IR\n"
+"Plural-Forms: nplurals=2; plural=(n > 1);\n"
+"Language-Team: Persian\n"
+"X-Generator: WP Top Bar\n"
+"X-Domain: wp-topbar\n"
+
+#. Plugin Name of the plugin
+#: wp-topbar.php
+msgid "WP Top Bar"
+msgstr "نوار بالای وردپرس"
+
+#. Description of the plugin
+#: wp-topbar.php
+msgid "A lightweight, fast top announcement bar with a custom message, button, image, sticky mode and a scheduling window. Styles are force-applied so themes and other plugins can't override them."
+msgstr "یک نوار اطلاعیه سبک و سریع در بالای سایت با متن دلخواه، دکمه، تصویر، حالت چسبان و بازه زمانی نمایش. استایل‌ها به‌صورت اجباری اعمال می‌شوند تا قالب یا افزونه‌های دیگر نتوانند آن‌ها را بازنویسی کنند."
+
+#. Author of the plugin
+#: wp-topbar.php
+msgid "SaeedCodez"
+msgstr "SaeedCodez"
+
+#: includes/class-wp-topbar-admin.php:42
+#: includes/class-wp-topbar-admin.php:43
+#: includes/views/settings-page.php:19
+msgid "Top Bar"
+msgstr "نوار بالا"
+
+#: includes/class-wp-topbar-admin.php:60
+msgid "Settings"
+msgstr "تنظیمات"
+
+#: includes/class-wp-topbar-admin.php:102
+msgid "Choose an image"
+msgstr "انتخاب یک تصویر"
+
+#: includes/class-wp-topbar-admin.php:103
+msgid "Use this image"
+msgstr "استفاده از این تصویر"
+
+#: includes/class-wp-topbar-frontend.php:126
+msgid "Site announcement"
+msgstr "اطلاعیه سایت"
+
+#: includes/class-wp-topbar-frontend.php:145
+msgid "Close"
+msgstr "بستن"
+
+#: includes/class-wp-topbar-settings.php:36
+msgid "We use cookies to improve your experience. 🎉 Check out our latest update!"
+msgstr "ما برای بهبود تجربه شما از کوکی استفاده می‌کنیم. 🎉 آخرین به‌روزرسانی را ببینید!"
+
+#: includes/class-wp-topbar-settings.php:38
+msgid "Learn more"
+msgstr "بیشتر بدانید"
+
+#: includes/views/settings-page.php:20
+msgid "A fast, theme-proof announcement bar for your site."
+msgstr "یک نوار اطلاعیه سریع و مقاوم در برابر قالب برای سایت شما."
+
+#: includes/views/settings-page.php:27
+msgid "Live preview"
+msgstr "پیش‌نمایش زنده"
+
+#: includes/views/settings-page.php:51
+msgid "General"
+msgstr "عمومی"
+
+#: includes/views/settings-page.php:57
+msgid "Turn the top bar on or off across your entire site."
+msgstr "نوار بالا را برای کل سایت روشن یا خاموش کنید."
+
+#: includes/views/settings-page.php:60
+msgid "Message"
+msgstr "پیام"
+
+#: includes/views/settings-page.php:62
+msgid "Basic HTML allowed: <a>, <strong>, <em>, <br>, <span>."
+msgstr "کدهای HTML ساده مجاز است: <a>, <strong>, <em>, <br>, <span>."
+
+#: includes/views/settings-page.php:68
+msgid "Button"
+msgstr "دکمه"
+
+#: includes/views/settings-page.php:74
+msgid "Show a call-to-action button next to the message."
+msgstr "نمایش یک دکمه فراخوان اقدام در کنار پیام."
+
+#: includes/views/settings-page.php:78
+msgid "Button text"
+msgstr "متن دکمه"
+
+#: includes/views/settings-page.php:82
+msgid "Button URL"
+msgstr "آدرس دکمه"
+
+#: includes/views/settings-page.php:89
+msgid "Open link in a new tab"
+msgstr "باز شدن لینک در تب جدید"
+
+#: includes/views/settings-page.php:95
+msgid "Image"
+msgstr "تصویر"
+
+#: includes/views/settings-page.php:97
+msgid "Optional logo or icon shown before the message."
+msgstr "لوگو یا آیکون اختیاری که پیش از پیام نمایش داده می‌شود."
+
+#: includes/views/settings-page.php:109
+msgid "Choose image"
+msgstr "انتخاب تصویر"
+
+#: includes/views/settings-page.php:110
+msgid "Remove"
+msgstr "حذف"
+
+#: includes/views/settings-page.php:115
+msgid "Image link (optional)"
+msgstr "لینک تصویر (اختیاری)"
+
+#: includes/views/settings-page.php:122
+msgid "Appearance"
+msgstr "ظاهر"
+
+#: includes/views/settings-page.php:127
+msgid "Background color"
+msgstr "رنگ پس‌زمینه"
+
+#: includes/views/settings-page.php:131
+msgid "Text color"
+msgstr "رنگ متن"
+
+#: includes/views/settings-page.php:138
+msgid "Button background"
+msgstr "پس‌زمینه دکمه"
+
+#: includes/views/settings-page.php:142
+msgid "Button text color"
+msgstr "رنگ متن دکمه"
+
+#: includes/views/settings-page.php:149
+msgid "Height (px)"
+msgstr "ارتفاع (پیکسل)"
+
+#: includes/views/settings-page.php:161
+msgid "Sticky mode"
+msgstr "حالت چسبان"
+
+#: includes/views/settings-page.php:162
+msgid "Bar stays visible while visitors scroll."
+msgstr "نوار هنگام اسکرول بازدیدکنندگان قابل مشاهده باقی می‌ماند."
+
+#: includes/views/settings-page.php:170
+msgid "Close button"
+msgstr "دکمه بستن"
+
+#: includes/views/settings-page.php:176
+msgid "Let visitors dismiss the bar. Their choice is remembered per browser."
+msgstr "به بازدیدکنندگان اجازه دهید نوار را ببندند. انتخاب آن‌ها در مرورگرشان ذخیره می‌شود."
+
+#: includes/views/settings-page.php:179
+msgid "Remember closed for"
+msgstr "زمان به‌خاطرسپاری بسته شدن"
+
+#: includes/views/settings-page.php:183
+msgid "Current browser session"
+msgstr "نشست فعلی مرورگر"
+
+#: includes/views/settings-page.php:184
+msgid "1 day"
+msgstr "۱ روز"
+
+#: includes/views/settings-page.php:185
+msgid "7 days"
+msgstr "۷ روز"
+
+#: includes/views/settings-page.php:186
+msgid "14 days"
+msgstr "۱۴ روز"
+
+#: includes/views/settings-page.php:187
+msgid "30 days"
+msgstr "۳۰ روز"
+
+#: includes/views/settings-page.php:188
+msgid "Permanently (until reset)"
+msgstr "همیشگی (تا زمان بازنشانی)"
+
+#: includes/views/settings-page.php:200
+msgid "Display schedule"
+msgstr "زمان‌بندی نمایش"
+
+#: includes/views/settings-page.php:206
+msgid "Only show the bar within a specific date and time range."
+msgstr "نوار فقط در یک بازه تاریخ و زمان مشخص نمایش داده شود."
+
+#: includes/views/settings-page.php:210
+msgid "Start"
+msgstr "شروع"
+
+#: includes/views/settings-page.php:214
+msgid "End"
+msgstr "پایان"
+
+#: includes/views/settings-page.php:218
+msgid "Times use your site’s configured timezone."
+msgstr "زمان‌ها بر اساس منطقه زمانی تنظیم‌شده سایت شما هستند."
+
+#: includes/views/settings-page.php:224
+msgid "Save changes"
+msgstr "ذخیره تغییرات"
