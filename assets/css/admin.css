@@ -355,6 +355,25 @@ textarea.wptb-input {
 	display: none;
 }
 
+.wptb-page-list {
+	max-height: 220px;
+	overflow-y: auto;
+	margin-top: 10px;
+	padding: 6px 12px;
+	border: 1px solid #e2e2e2;
+	border-radius: 8px;
+	background: #fff;
+}
+
+.wptb-page-list .wptb-checkbox {
+	margin: 0;
+	padding: 6px 0;
+}
+
+.wptb-page-list .wptb-checkbox[hidden] {
+	display: none;
+}
+
 .wptb-schedule-fields {
 	transition: opacity 0.15s ease;
 }

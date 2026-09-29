@@ -25,6 +25,7 @@ WP Top Bar adds a clean, lightweight notification bar to the top of your site. U
 * Adjustable bar height
 * Sticky mode, so the bar stays visible while visitors scroll
 * Dismissible close button — the visitor's choice is remembered in their browser (session, days, or permanently)
+* Excluded pages — hide the bar on any pages you choose
 * Display time range — schedule the bar to only appear between a start and end date/time
 * Scoped styles — the bar's layout and colors hold up against typical theme and plugin CSS
 * Uses your theme's body font automatically
@@ -63,6 +64,7 @@ No. All of the plugin's CSS is scoped to the bar's `#wptb-bar` ID, so it doesn't
 == Changelog ==
 
 = Unreleased =
+* Added an "Excluded pages" setting: choose the pages on which the bar should not be displayed.
 * Compatibility with themes that pin their header with `position: fixed` or `sticky`: such headers are now pushed below the visible part of the bar instead of overlapping it. The offset is also exposed as the `--wptb-offset` CSS variable.
 
 = 1.1.0 =

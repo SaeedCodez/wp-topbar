@@ -271,6 +271,31 @@ if ( ! defined( 'ABSPATH' ) ) {
 
 			<section class="wptb-card">
 				<header class="wptb-card-header">
+					<h2><?php esc_html_e( 'Excluded pages', 'wp-topbar' ); ?></h2>
+				</header>
+				<p class="wptb-card-desc"><?php esc_html_e( 'The bar will not be shown on the pages you select here.', 'wp-topbar' ); ?></p>
+
+				<?php
+				$pages    = get_pages( array( 'post_status' => array( 'publish', 'private' ) ) );
+				$excluded = array_map( 'absint', (array) $options['excluded_pages'] );
+				?>
+				<?php if ( $pages ) : ?>
+					<input type="search" id="wptb-excluded-search" class="wptb-input" placeholder="<?php esc_attr_e( 'Search pages…', 'wp-topbar' ); ?>" />
+					<div class="wptb-page-list" id="wptb-excluded-list">
+						<?php foreach ( $pages as $page ) : ?>
+							<label class="wptb-checkbox" data-title="<?php echo esc_attr( function_exists( 'mb_strtolower' ) ? mb_strtolower( get_the_title( $page ) ) : strtolower( get_the_title( $page ) ) ); ?>">
+								<input type="checkbox" name="wptb_options[excluded_pages][]" value="<?php echo esc_attr( $page->ID ); ?>" <?php checked( in_array( (int) $page->ID, $excluded, true ) ); ?> />
+								<?php echo esc_html( get_the_title( $page ) ? get_the_title( $page ) : __( '(no title)', 'wp-topbar' ) ); ?>
+							</label>
+						<?php endforeach; ?>
+					</div>
+				<?php else : ?>
+					<p class="wptb-hint"><?php esc_html_e( 'No pages found.', 'wp-topbar' ); ?></p>
+				<?php endif; ?>
+			</section>
+
+			<section class="wptb-card">
+				<header class="wptb-card-header">
 					<h2><?php esc_html_e( 'Display schedule', 'wp-topbar' ); ?></h2>
 					<label class="wptb-switch">
 						<input type="checkbox" id="wptb-schedule-enabled" name="wptb_options[schedule_enabled]" value="1" <?php checked( $options['schedule_enabled'] ); ?> />

@@ -274,3 +274,23 @@ msgstr "استفاده از این تصویر"
 #: includes/class-wp-topbar-settings.php:44
 msgid "We use cookies to improve your experience. 🎉 Check out our latest update!"
 msgstr "ما برای بهبود تجربه شما از کوکی استفاده می‌کنیم. 🎉 آخرین به‌روزرسانی را ببینید!"
+
+#: includes/views/settings-page.php
+msgid "Excluded pages"
+msgstr "صفحات مستثنی"
+
+#: includes/views/settings-page.php
+msgid "The bar will not be shown on the pages you select here."
+msgstr "نوار بالا در صفحاتی که اینجا انتخاب کنید نمایش داده نمی‌شود."
+
+#: includes/views/settings-page.php
+msgid "Search pages…"
+msgstr "جستجوی صفحات…"
+
+#: includes/views/settings-page.php
+msgid "(no title)"
+msgstr "(بدون عنوان)"
+
+#: includes/views/settings-page.php
+msgid "No pages found."
+msgstr "صفحه‌ای پیدا نشد."

@@ -63,6 +63,7 @@ class WP_Topbar_Settings {
 			'schedule_enabled'   => false,
 			'start_date'         => '',
 			'end_date'           => '',
+			'excluded_pages'     => array(),
 		);
 	}
 
@@ -168,6 +169,10 @@ class WP_Topbar_Settings {
 		$output['schedule_enabled'] = ! empty( $input['schedule_enabled'] );
 		$output['start_date']       = isset( $input['start_date'] ) ? $this->sanitize_datetime( $input['start_date'] ) : '';
 		$output['end_date']         = isset( $input['end_date'] ) ? $this->sanitize_datetime( $input['end_date'] ) : '';
+
+		$output['excluded_pages'] = ( isset( $input['excluded_pages'] ) && is_array( $input['excluded_pages'] ) )
+			? array_values( array_unique( array_filter( array_map( 'absint', $input['excluded_pages'] ) ) ) )
+			: array();
 
 		return $output;
 	}

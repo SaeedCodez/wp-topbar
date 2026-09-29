@@ -44,6 +44,10 @@ class WP_Topbar_Frontend {
 			return false;
 		}
 
+		if ( $this->is_excluded_page() ) {
+			return false;
+		}
+
 		if ( ! $this->settings->get( 'schedule_enabled' ) ) {
 			return true;
 		}
@@ -67,6 +71,31 @@ class WP_Topbar_Frontend {
 		}
 
 		return true;
+	}
+
+	/**
+	 * Whether the current request is one of the pages the bar is excluded from.
+	 *
+	 * @return bool
+	 */
+	private function is_excluded_page() {
+		$excluded = array_map( 'absint', (array) $this->settings->get( 'excluded_pages', array() ) );
+
+		if ( ! $excluded ) {
+			return false;
+		}
+
+		$page_id = 0;
+
+		if ( is_singular() ) {
+			$page_id = get_queried_object_id();
+		} elseif ( is_home() && ! is_front_page() ) {
+			$page_id = (int) get_option( 'page_for_posts' );
+		} elseif ( function_exists( 'is_shop' ) && is_shop() && function_exists( 'wc_get_page_id' ) ) {
+			$page_id = (int) wc_get_page_id( 'shop' );
+		}
+
+		return $page_id && in_array( $page_id, $excluded, true );
 	}
 
 	/**
@@ -108,7 +137,9 @@ class WP_Topbar_Frontend {
 			return;
 		}
 
-		$store_key = 'wptb_closed_' . substr( md5( wp_json_encode( $this->settings->get_options() ) ), 0, 10 );
+		$key_options = $this->settings->get_options();
+		unset( $key_options['excluded_pages'] );
+		$store_key = 'wptb_closed_' . substr( md5( wp_json_encode( $key_options ) ), 0, 10 );
 
 		$style_vars = sprintf(
 			'--wptb-height:%1$dpx;--wptb-bg:%2$s;--wptb-color:%3$s;--wptb-btn-bg:%4$s;--wptb-btn-color:%5$s;',

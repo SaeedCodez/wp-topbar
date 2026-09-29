@@ -121,6 +121,22 @@
 		$( '#wptb-schedule-enabled' ).on( 'change', toggleSchedule );
 		toggleSchedule();
 
+		// Filter the excluded-pages list.
+		$( '#wptb-excluded-search' ).on( 'input', function () {
+			var term = this.value.trim().toLowerCase();
+
+			$( '#wptb-excluded-list .wptb-checkbox' ).each( function () {
+				this.hidden = term && $( this ).attr( 'data-title' ).indexOf( term ) === -1;
+			} );
+		} );
+
+		// Don't submit the search box with the form.
+		$( '#wptb-excluded-search' ).on( 'keydown', function ( e ) {
+			if ( 13 === e.which ) {
+				e.preventDefault();
+			}
+		} );
+
 		/**
 		 * Wire up a media-library picker for an image field.
 		 *

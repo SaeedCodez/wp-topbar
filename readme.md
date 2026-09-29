@@ -11,6 +11,7 @@ See [`readme.txt`](readme.txt) for the full WordPress plugin readme (features, i
 - Optional image/logo
 - Sticky mode with adjustable height
 - Close button with per-visitor remembered state (session / N days / permanent)
+- Excluded pages (hide the bar on pages you choose)
 - Display time range (schedule a start/end date & time)
 - Scoped styles that hold up against theme/plugin CSS without `!important`
 - Inherits your theme's body font
