@@ -62,6 +62,9 @@ No. All of the plugin's CSS is scoped to the bar's `#wptb-bar` ID, so it doesn't
 
 == Changelog ==
 
+= Unreleased =
+* Compatibility with themes that pin their header with `position: fixed` or `sticky`: such headers are now pushed below the visible part of the bar instead of overlapping it. The offset is also exposed as the `--wptb-offset` CSS variable.
+
 = 1.1.0 =
 * Added a full-image bar mode: display a single image across the entire bar, with an optional link and alt text.
 

@@ -78,6 +78,7 @@ class WP_Topbar_Frontend {
 		}
 
 		wp_enqueue_style( 'wp-topbar', WPTB_URL . 'assets/css/topbar.css', array(), WPTB_VERSION );
+		wp_enqueue_script( 'wp-topbar', WPTB_URL . 'assets/js/topbar.js', array(), WPTB_VERSION, true );
 	}
 
 	/**
@@ -206,6 +207,7 @@ class WP_Topbar_Frontend {
 					btn.addEventListener('click',function(){
 						setClosed();
 						bar.style.display='none';
+						window.dispatchEvent(new Event('wptb:change'));
 					});
 				}
 			}
